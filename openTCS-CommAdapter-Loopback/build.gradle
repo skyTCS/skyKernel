@@ -1,0 +1,12 @@
+apply from: "${rootDir}/gradle/guice-project.gradle"
+apply from: "${rootDir}/gradle/license-headers.gradle"
+
+dependencies {
+  compile project(':openTCS-API-Injection')
+  compile project(':openTCS-Common')
+  compile fileTree(dir: 'lib',include: ['*.jar'])
+}
+
+task release {
+  dependsOn build
+}
