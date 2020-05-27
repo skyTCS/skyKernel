@@ -40,13 +40,10 @@ public class TestCommAdapter extends BasicVehicleCommAdapter {
     super(new TestVehicleModel(vehicle), 2, 1, "CHARGE");
     this.componentsFactory = componentsFactory;
     this.vehicle = vehicle;
-    /*String url = vehicle.getProperty("url");
-    String username = vehicle.getProperty("username");
-    String password = vehicle.getProperty("password");
-    System.out.println("***---***---username::::" + username);
-    System.out.println("***---***---password::::" + password);*/
+    
     key = vehicle.getProperty("key");
     System.out.println("***---***---key::::" + key);
+    
     this.mqttUtil = new MqttMessageUtil();
     mqttUtil.connect();
     //this.mqttUtil.connect("admin", "public");

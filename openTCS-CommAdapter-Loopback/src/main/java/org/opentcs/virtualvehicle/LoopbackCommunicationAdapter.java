@@ -50,6 +50,7 @@ public class LoopbackCommunicationAdapter
 
   /**
    * The name of the load handling device set by this adapter.
+   * 该适配器设置的负载处理设备的名称。
    */
   public static final String LHD_NAME = "default";
   /**
@@ -58,58 +59,60 @@ public class LoopbackCommunicationAdapter
   private static final Logger LOG = LoggerFactory.getLogger(LoopbackCommunicationAdapter.class);
   /**
    * An error code indicating that there's a conflict between a load operation and the vehicle's
-   * current load state.
+   * current load state.错误代码，指示加载操作与车辆当前的加载状态之间存在冲突。
    */
   private static final String LOAD_OPERATION_CONFLICT = "cannotLoadWhenLoaded";
   /**
    * An error code indicating that there's a conflict between an unload operation and the vehicle's
-   * current load state.
+   * current load state.错误代码，指示卸载操作与车辆的当前负载状态之间存在冲突。
    */
   private static final String UNLOAD_OPERATION_CONFLICT = "cannotUnloadWhenNotLoaded";
   /**
    * The time by which to advance the velocity controller per step (in ms).
+   * 每步前进速度控制器的时间（以毫秒为单位）。
    */
   private static final int ADVANCE_TIME = 100;
   /**
-   * This instance's configuration.
+   * This instance's configuration.该实例的配置。
    */
   private final VirtualVehicleConfiguration configuration;
   /**
-   * The adapter components factory.
+   * The adapter components factory.适配器组件工厂。
    */
   private final LoopbackAdapterComponentsFactory componentsFactory;
   /**
-   * The kernel's executor.
+   * The kernel's executor.内核的执行程序。
    */
   private final ExecutorService kernelExecutor;
   /**
-   * The task simulating the virtual vehicle's behaviour.
+   * The task simulating the virtual vehicle's behaviour.模拟虚拟车辆行为的任务。
    */
   private CyclicTask vehicleSimulationTask;
   /**
    * The boolean flag to check if execution of the next command is allowed.
+   * 布尔标志，用于检查是否允许执行下一个命令。
    */
   private boolean singleStepExecutionAllowed;
   /**
-   * The vehicle to this comm adapter instance.
+   * The vehicle to this comm adapter instance.车辆到此comm适配器实例。
    */
   private final Vehicle vehicle;
   /**
-   * The vehicle's load state.
+   * The vehicle's load state.车辆的负载状态。
    */
   private LoadState loadState = LoadState.EMPTY;
   /**
-   * Whether the loopback adapter is initialized or not.
+   * Whether the loopback adapter is initialized or not.回送适配器是否已初始化。
    */
   private boolean initialized;
 
   /**
    * Creates a new instance.
    *
-   * @param componentsFactory The factory providing additional components for this adapter.
-   * @param configuration This class's configuration.
-   * @param vehicle The vehicle this adapter is associated with.
-   * @param kernelExecutor The kernel's executor.
+   * @param componentsFactory The factory providing additional components for this adapter.工厂为此适配器提供了其他组件。
+   * @param configuration This class's configuration.此类的配置。
+   * @param vehicle The vehicle this adapter is associated with.该适配器与之关联的车辆。
+   * @param kernelExecutor The kernel's executor.内核的执行程序。
    */
   @Inject
   public LoopbackCommunicationAdapter(LoopbackAdapterComponentsFactory componentsFactory,
