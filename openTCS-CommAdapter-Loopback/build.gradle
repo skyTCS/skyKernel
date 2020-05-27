@@ -4,7 +4,9 @@ apply from: "${rootDir}/gradle/license-headers.gradle"
 dependencies {
   compile project(':openTCS-API-Injection')
   compile project(':openTCS-Common')
+  compile group: 'redis.clients', name: 'jedis', version: '3.3.0'
   compile fileTree(dir: 'lib',include: ['*.jar'])
+  
 }
 
 task release {

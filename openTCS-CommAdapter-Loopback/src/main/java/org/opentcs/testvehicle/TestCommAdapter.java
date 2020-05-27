@@ -1,7 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Title:TestCommAdapter.java
+ * 功能；通信适配器
+ * Author: star
+ * Creation time: 
+ * Modification time：2020-5-26 18:40
+ * Version： V1.2
  */
 package org.opentcs.testvehicle;
 
@@ -21,28 +24,31 @@ import org.opentcs.testvehicle.util.JsonUtil;
 import org.opentcs.util.CyclicTask;
 import org.opentcs.util.ExplainedBoolean;
 
-/**
- *
- * @author eternal
- */
 public class TestCommAdapter extends BasicVehicleCommAdapter {
   
-  private final MqttMessageUtil mqttUtil;
+  private final MqttMessageUtil mqttUtil; //通信服务
   private static String dfString="";
   private TestAdapterComponentsFactory componentsFactory;
   private Vehicle vehicle;
   private boolean initialized;
   private CyclicTask testTask;
+  private String name;
+  private String key;     //订阅主题，redis key
 
   @Inject
   public TestCommAdapter(TestAdapterComponentsFactory componentsFactory, @Assisted Vehicle vehicle) {
     super(new TestVehicleModel(vehicle), 2, 1, "CHARGE");
     this.componentsFactory = componentsFactory;
     this.vehicle = vehicle;
-    String url = vehicle.getProperty("url");
-    String username = vehicle.getProperty("uesrname");
+    /*String url = vehicle.getProperty("url");
+    String username = vehicle.getProperty("username");
     String password = vehicle.getProperty("password");
-    this.mqttUtil = new MqttMessageUtil(url, "id" + UUID.randomUUID());
+    System.out.println("***---***---username::::" + username);
+    System.out.println("***---***---password::::" + password);*/
+    key = vehicle.getProperty("key");
+    System.out.println("***---***---key::::" + key);
+    this.mqttUtil = new MqttMessageUtil();
+    mqttUtil.connect();
     //this.mqttUtil.connect("admin", "public");
     //this.mqttUtil.subscribe("s", 0);
   }
@@ -67,12 +73,16 @@ public class TestCommAdapter extends BasicVehicleCommAdapter {
     if (isEnabled()) {
       return;
     }
+    System.out.println("--***-*-*-*-kai qi xian cheng  ");
     //开启线程(略)
     testTask = new TestTask();
+    
     //getName()返回此通信适配器的名称。
     Thread simThread = new Thread(testTask, getName() + "-Task");
     simThread.start();
-    
+    //开启订阅
+    mqttUtil.subscribe(key, 0);
+    System.out.println("--***-*-*-*-kai qi ding yue ");
     super.enable();
   }
 
@@ -88,6 +98,8 @@ public class TestCommAdapter extends BasicVehicleCommAdapter {
     //在下一个执行周期之前终止此任务。此方法仅将任务标记为终止并立即返回。如果当前正在执行实际任务，则不会中断其执行，但完成后不会再次运行。
     testTask.terminate();
     testTask = null;
+    //close
+    mqttUtil.close();
     super.disable();
   }
   
@@ -136,7 +148,8 @@ public class TestCommAdapter extends BasicVehicleCommAdapter {
    */
   @Override
   protected void connectVehicle() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    System.out.println("connnnnnnnnnnnnnnnnnnnnnnnnn");
   }
 
   /**
@@ -144,6 +157,7 @@ public class TestCommAdapter extends BasicVehicleCommAdapter {
    */
   @Override
   protected void disconnectVehicle() {
+    
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
@@ -177,21 +191,34 @@ public class TestCommAdapter extends BasicVehicleCommAdapter {
     protected void runActualTask() {
       try {
         //获取状态  位置  速度  方向等
-        String str = mqttUtil.getPaylod();
+        Car car = mqttUtil.getPaylod(key);
+        System.out.println("------car chenggong ");
+        if (car == null) {
+          System.out.println("------car null");
+          Thread.sleep(1000);
+          return;
+        }System.out.println("------car chenggong hou == " + car.toString());
+        /******String str = mqttUtil.getPaylod();
         if (str == null  ||  str.equals("")) {
           Thread.sleep(1000);
           return;
-        }
+        }*/
         //此方法返回true，如果此字符串包含，否则返回false。
         /*if (!str.contains(";")) {
           Thread.sleep(1000);
           return;
         }*/
-        Car car = (Car)JsonUtil.getObject(str, Car.class);
+    
+        /*****Car car = new Car();
+        car.setPoint("Point-0020");
+        car.setStatus("free");*/
+        //if (car.getState().equals("") || car.getState() == null)
+        //  car.setState("free");
         String currentPoint = car.getPoint();
-        String currentStatus = car.getStatus();
+        String currentStatus = car.getState();
         //更新车辆的当前位置。
         getProcessModel().setVehiclePosition(currentPoint);
+        System.out.println("********set vehicle point++++" + currentPoint);
         //设置车辆的当前状态。
         if (currentStatus.equals("free")) {
           getProcessModel().setVehicleState(Vehicle.State.IDLE);
@@ -199,7 +226,7 @@ public class TestCommAdapter extends BasicVehicleCommAdapter {
         else if (currentStatus.equals("executing")) {
           getProcessModel().setVehicleState(Vehicle.State.EXECUTING);
         }
-        
+        System.out.println("********set vehicle state++++" + currentStatus);
         
         final MovementCommand curCommand;
         synchronized (TestCommAdapter.this) {
@@ -302,14 +329,19 @@ public class TestCommAdapter extends BasicVehicleCommAdapter {
       }
       //返回对此路径的终点的引用。
       String pointName = step.getDestinationPoint().getName();
+      System.out.println("********vehicle point=====" + pointName);
       //返回车辆及其通讯适配器属性的可观察模型。设置：EXECUTING：车辆正在处理移动命令。
       getProcessModel().setVehicleState(Vehicle.State.EXECUTING);
       String currentPoint = "";
       String currentStatus = "";
       boolean flag = false;
       while (!flag) {
-        String str = mqttUtil.getPaylod();
+        /*String str = mqttUtil.getPaylod();
         if (str.equals("OK")) {
+          flag = true;
+        }*/
+        Car car = mqttUtil.getPaylod(key);
+        if (car.getState().equals("ok")) {
           flag = true;
         }
         Thread.sleep(1000);
@@ -317,7 +349,12 @@ public class TestCommAdapter extends BasicVehicleCommAdapter {
       
       //isTerminated指示此任务是否已终止。
       while (!currentPoint.equals(pointName) && !isTerminated()) {
-        String str = mqttUtil.getPaylod();
+        Car car = mqttUtil.getPaylod(key);
+        if (car == null) {
+          Thread.sleep(1000);
+          continue;
+        }
+        /*String str = mqttUtil.getPaylod();
         if (str == null ) {
           Thread.sleep(1000);
           continue;
@@ -325,10 +362,20 @@ public class TestCommAdapter extends BasicVehicleCommAdapter {
         if (!str.contains(";")) {
           Thread.sleep(1000);
           continue;
-        }
-        currentPoint = str.split(";")[0];
-        currentStatus = str.split(";")[1];
+        }*/
+        ///currentPoint = str.split(";")[0];
+       // currentStatus = str.split(";")[1];
+       /**/
+        /***Car car = new Car();
+        car.setPoint("Point-0020");
+        car.setStatus("free");*/
+        //if (car.getState().equals("") || car.getState() == null)
+        //  car.setState("free");
+        currentPoint = car.getPoint();
+        currentStatus = car.getState();
+        /**/
         getProcessModel().setVehiclePosition(currentPoint);
+        System.out.println("********set vehicle point++++" + currentPoint);
         if (currentStatus.equals("free")) {
           getProcessModel().setVehicleState(Vehicle.State.IDLE);
         }
