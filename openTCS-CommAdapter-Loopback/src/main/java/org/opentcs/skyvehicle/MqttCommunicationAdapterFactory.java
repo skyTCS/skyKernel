@@ -3,7 +3,6 @@ package org.opentcs.skyvehicle;
 import static java.util.Objects.requireNonNull;
 import javax.inject.Inject;
 import org.opentcs.data.model.Vehicle;
-import org.opentcs.drivers.vehicle.VehicleCommAdapter;
 import org.opentcs.drivers.vehicle.VehicleCommAdapterDescription;
 import org.opentcs.drivers.vehicle.VehicleCommAdapterFactory;
 
@@ -35,7 +34,7 @@ public class MqttCommunicationAdapterFactory
   @Override
   public String getAdapterDescription() {
     //这是Kernel中显示的驱动名称,中文会乱码，如果要使用中文，请使用配置文件
-    return "MyTestAdapter";
+    return "MqttAdapter";
   }
 
   /**
@@ -64,7 +63,7 @@ public class MqttCommunicationAdapterFactory
    * @return 
    */
   @Override
-  public VehicleCommAdapter getAdapterFor(Vehicle vehicle) {
+  public MqttCommunicationAdapter getAdapterFor(Vehicle vehicle) {
     requireNonNull(vehicle, "vehicle");
     return adapterFactory.createMqttCommAdapter(vehicle);
   }

@@ -9,6 +9,8 @@ package org.opentcs.virtualvehicle;
 
 import com.google.inject.assistedinject.FactoryModuleBuilder;
 import org.opentcs.customizations.kernel.KernelInjectionModule;
+import org.opentcs.skyvehicle.MqttAdapterComponentsFactory;
+import org.opentcs.skyvehicle.MqttCommunicationAdapterFactory;
 import org.opentcs.testvehicle.TestAdapterComponentsFactory;
 import org.opentcs.testvehicle.TestCommAdapterFactory;
 import org.slf4j.Logger;
@@ -44,8 +46,11 @@ public class LoopbackCommAdapterModule
     install(new FactoryModuleBuilder().build(LoopbackAdapterComponentsFactory.class));
     
     /**//**/
-    install(new FactoryModuleBuilder().build(TestAdapterComponentsFactory.class));
-    vehicleCommAdaptersBinder().addBinding().to(TestCommAdapterFactory.class);
+    //install(new FactoryModuleBuilder().build(TestAdapterComponentsFactory.class));
+    //vehicleCommAdaptersBinder().addBinding().to(TestCommAdapterFactory.class);
+    
+    install(new FactoryModuleBuilder().build(MqttAdapterComponentsFactory.class));
+    vehicleCommAdaptersBinder().addBinding().to(MqttCommunicationAdapterFactory.class);
     /**//**/
     
     // tag::documentation_createCommAdapterModule[]

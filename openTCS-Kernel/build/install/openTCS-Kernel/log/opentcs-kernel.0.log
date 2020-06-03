@@ -1,63 +1,62 @@
-[20200526-22:30:58-445] INFO    main                 o.o.util.Environment.logSystemInfo()                   : openTCS baseline version: 4.17.0-SNAPSHOT (build date: 2020-05-03 18:56:10), customization '-' version - (build date: -), Java: 1.8.0_231, Oracle Corporation; JVM: 25.231-b11, Oracle Corporation; OS: Linux, amd64
-[20200526-22:30:58-620] INFO    main                 o.o.c.cfg4j.Cfg4jConfigurationBindingProvider.buildSource(): Using default configuration file /home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-Kernel/build/install/openTCS-Kernel/./config/opentcs-kernel-defaults-baseline.properties...
-[20200526-22:30:58-631] WARNING main                 o.o.c.cfg4j.Cfg4jConfigurationBindingProvider.buildSource(): Supplementary configuration file /home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-Kernel/build/install/openTCS-Kernel/./config/opentcs-kernel-defaults-custom.properties not found, skipped.
-[20200526-22:30:58-634] INFO    main                 o.o.c.cfg4j.Cfg4jConfigurationBindingProvider.buildSource(): Using overrides from supplementary configuration file /home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-Kernel/build/install/openTCS-Kernel/./config/opentcs-kernel.properties...
-[20200526-22:30:58-640] INFO    main                 o.c.provider.ConfigurationProviderBuilder.build()      : Initializing ConfigurationProvider with org.opentcs.configuration.cfg4j.CachedConfigurationSource source, org.opentcs.configuration.cfg4j.PeriodicalReloadStrategy reload strategy and org.cfg4j.source.context.environment.DefaultEnvironment environment
-[20200526-22:30:58-657] INFO    main                 o.o.kernel.RunKernel.findRegisteredModules()           : Integrating injection module org.opentcs.virtualvehicle.LoopbackCommAdapterModule
-[20200526-22:30:58-660] INFO    main                 o.o.kernel.RunKernel.findRegisteredModules()           : Integrating injection module org.opentcs.kernel.extensions.adminwebapi.AdminWebApiModule
-[20200526-22:30:58-662] INFO    main                 o.o.kernel.RunKernel.findRegisteredModules()           : Integrating injection module org.opentcs.kernel.extensions.servicewebapi.ServiceWebApiModule
-[20200526-22:30:58-664] INFO    main                 o.o.kernel.RunKernel.findRegisteredModules()           : Integrating injection module org.opentcs.kernel.extensions.rmi.RmiServicesModule
-[20200526-22:30:58-666] INFO    main                 o.o.kernel.RunKernel.findRegisteredModules()           : Integrating injection module org.opentcs.kernel.extensions.statistics.StatisticsModule
-[20200526-22:30:58-668] INFO    main                 o.o.kernel.RunKernel.findRegisteredModules()           : Integrating injection module org.opentcs.kernel.extensions.xmlhost.TcpHostInterfaceModule
-[20200526-22:30:58-671] INFO    main                 o.o.kernel.RunKernel.findRegisteredModules()           : Integrating injection module org.opentcs.kernel.extensions.controlcenter.ControlCenterModule
-[20200526-22:30:59-220] WARNING main                 o.o.k.e.rmi.RmiServicesModule.configure()              : SSL encryption disabled, connections will not be secured!
-[20200526-22:30:59-243] INFO    main                 o.o.k.e.controlcenter.ControlCenterModule.configure()  : Control center disabled by configuration.
-[20200526-22:31:00-149] INFO    main                 o.o.k.vehicles.VehicleCommAdapterRegistry.<init>()     : Setting up communication adapter factory: org.opentcs.testvehicle.TestCommAdapterFactory
-[20200526-22:31:00-150] INFO    main                 o.o.k.vehicles.VehicleCommAdapterRegistry.<init>()     : Setting up communication adapter factory: org.opentcs.virtualvehicle.LoopbackCommunicationAdapterFactory
-[20200526-22:31:00-207] INFO    main                 o.o.k.e.rmi.XMLFileUserAccountPersister.loadUserAccounts(): Account data file does not exist, no user accounts available.
-[20200526-22:31:00-222] INFO    Thread-1             o.e.j.u.log.Log.initialized()                          : Logging initialized @1985ms to org.eclipse.jetty.util.log.Slf4jLog
-[20200526-22:31:00-346] INFO    Thread-1             s.e.jetty.EmbeddedJettyServer.ignite()                 : == Spark has ignited ...
-[20200526-22:31:00-349] INFO    Thread-1             s.e.jetty.EmbeddedJettyServer.ignite()                 : >> Listening on 127.0.0.1:55100
-[20200526-22:31:00-356] INFO    Thread-1             o.e.j.server.Server.doStart()                          : jetty-9.4.6.v20170531
-[20200526-22:31:00-373] INFO    main                 o.o.kernel.StandardKernel.setState()                   : Switching kernel to state 'MODELLING'
-[20200526-22:31:00-414] INFO    Thread-1             o.e.j.s.session.DefaultSessionIdManager.doStart()      : DefaultSessionIdManager workerName=node0
-[20200526-22:31:00-416] INFO    Thread-1             o.e.j.s.session.DefaultSessionIdManager.doStart()      : No SessionScavenger set, using defaults
-[20200526-22:31:00-419] INFO    Thread-1             o.e.j.s.session.HouseKeeper.startScavenging()          : Scavenging every 660000ms
-[20200526-22:31:00-584] INFO    Thread-1             o.e.j.server.AbstractConnector.doStart()               : Started ServerConnector@709226f8{HTTP/1.1,[http/1.1]}{127.0.0.1:55100}
-[20200526-22:31:00-586] INFO    Thread-1             o.e.j.server.Server.doStart()                          : Started @2350ms
-[20200526-22:31:00-909] INFO    main                 o.o.kernel.KernelStarter.startKernel()                 : Loaded model named 'unnamed'.
-[20200526-22:31:00-910] INFO    main                 o.o.kernel.StandardKernel.setState()                   : Switching kernel to state 'OPERATING'
-[20200526-22:31:00-915] WARNING main                 o.o.k.e.servicewebapi.ServiceWebApi.initialize()       : Encryption disabled, connections will not be secured!
-[20200526-22:31:00-918] INFO    Thread-10            s.e.jetty.EmbeddedJettyServer.ignite()                 : == Spark has ignited ...
-[20200526-22:31:00-919] INFO    Thread-10            s.e.jetty.EmbeddedJettyServer.ignite()                 : >> Listening on 0.0.0.0:55200
-[20200526-22:31:00-920] INFO    Thread-10            o.e.j.server.Server.doStart()                          : jetty-9.4.6.v20170531
-[20200526-22:31:00-928] INFO    main                 o.o.k.e.statistics.StatisticsCollector.initialize()    : Logging events to /home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-Kernel/build/install/openTCS-Kernel/./log/statistics/opentcs-statistics-20200526-223100.txt...
-[20200526-22:31:00-928] INFO    Thread-10            o.e.j.s.session.DefaultSessionIdManager.doStart()      : DefaultSessionIdManager workerName=node0
-[20200526-22:31:00-929] INFO    Thread-10            o.e.j.s.session.DefaultSessionIdManager.doStart()      : No SessionScavenger set, using defaults
-[20200526-22:31:00-929] INFO    Thread-10            o.e.j.s.session.HouseKeeper.startScavenging()          : Scavenging every 600000ms
-[20200526-22:31:00-931] INFO    Thread-10            o.e.j.server.AbstractConnector.doStart()               : Started ServerConnector@40ab3825{HTTP/1.1,[http/1.1]}{0.0.0.0:55200}
-[20200526-22:31:00-931] INFO    Thread-10            o.e.j.server.Server.doStart()                          : Started @2695ms
-[20200526-22:31:28-664] INFO    Thread-19            s.e.jetty.EmbeddedJettyServer.extinguish()             : >>> Spark shutting down ...
-[20200526-22:31:28-664] INFO    kernelExecutor       o.o.k.e.x.orders.XMLTelegramOrderReceiver.terminate()  : Terminating connection listener...
-[20200526-22:31:28-665] INFO    xmlOrderConnListener o.o.k.e.x.orders.XMLTelegramOrderReceiver$ConnectionListener.run(): Received termination signal.
-[20200526-22:31:28-665] INFO    xmlOrderConnListener o.o.k.e.x.orders.XMLTelegramOrderReceiver$ConnectionListener.run(): Terminated connection listener.
-[20200526-22:31:28-666] INFO    kernelExecutor       o.o.k.e.x.orders.XMLTelegramOrderReceiver.terminate()  : Connection listener thread has terminated.
-[20200526-22:31:28-671] INFO    Thread-19            o.e.j.server.AbstractConnector.doStop()                : Stopped ServerConnector@40ab3825{HTTP/1.1,[http/1.1]}{0.0.0.0:55200}
-[20200526-22:31:28-672] INFO    Thread-19            o.e.j.s.session.HouseKeeper.stopScavenging()           : Stopped scavenging
-[20200526-22:31:28-675] INFO    Thread-19            s.e.jetty.EmbeddedJettyServer.extinguish()             : done
-[20200526-22:31:29-168] INFO    kernelExecutor       o.o.kernel.StandardKernel.setState()                   : Switching kernel to state 'MODELLING'
-[20200526-22:31:29-405] INFO    kernelExecutor       o.o.kernel.StandardKernel.setState()                   : Switching kernel to state 'OPERATING'
-[20200526-22:31:30-854] WARNING kernelExecutor       o.o.k.e.servicewebapi.ServiceWebApi.initialize()       : Encryption disabled, connections will not be secured!
-[20200526-22:31:30-860] INFO    Thread-40            s.e.jetty.EmbeddedJettyServer.ignite()                 : == Spark has ignited ...
-[20200526-22:31:30-861] INFO    Thread-40            s.e.jetty.EmbeddedJettyServer.ignite()                 : >> Listening on 0.0.0.0:55200
-[20200526-22:31:30-862] INFO    kernelExecutor       o.o.k.e.statistics.StatisticsCollector.initialize()    : Logging events to /home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-Kernel/build/install/openTCS-Kernel/./log/statistics/opentcs-statistics-20200526-223130.txt...
-[20200526-22:31:30-862] INFO    Thread-40            o.e.j.server.Server.doStart()                          : jetty-9.4.6.v20170531
-[20200526-22:31:30-889] INFO    Thread-40            o.e.j.s.session.DefaultSessionIdManager.doStart()      : DefaultSessionIdManager workerName=node0
-[20200526-22:31:30-889] INFO    Thread-40            o.e.j.s.session.DefaultSessionIdManager.doStart()      : No SessionScavenger set, using defaults
-[20200526-22:31:30-891] INFO    Thread-40            o.e.j.s.session.HouseKeeper.startScavenging()          : Scavenging every 600000ms
-[20200526-22:31:30-896] INFO    Thread-40            o.e.j.server.AbstractConnector.doStart()               : Started ServerConnector@60d61d91{HTTP/1.1,[http/1.1]}{0.0.0.0:55200}
-[20200526-22:31:30-898] INFO    Thread-40            o.e.j.server.Server.doStart()                          : Started @32662ms
-[20200526-22:32:04-106] INFO    kernelExecutor       o.o.s.b.dispatching.TransportOrderUtil.updateTransportOrderState(): Updating state of transport order Move-01E98PBHQQX4FFEMGH9N9Y7WD5 to ACTIVE...
-[20200526-22:32:04-111] INFO    kernelExecutor       o.o.s.b.dispatching.TransportOrderUtil.updateTransportOrderState(): Updating state of transport order Move-01E98PBHQQX4FFEMGH9N9Y7WD5 to DISPATCHABLE...
-[20200526-22:32:08-764] INFO    kernelExecutor       o.o.s.b.dispatching.TransportOrderUtil.updateTransportOrderState(): Updating state of transport order TOrder-01E98PBP9KC28V8Z7X2YHVE5M6 to ACTIVE...
-[20200526-22:32:08-766] INFO    kernelExecutor       o.o.s.b.dispatching.TransportOrderUtil.updateTransportOrderState(): Updating state of transport order TOrder-01E98PBP9KC28V8Z7X2YHVE5M6 to DISPATCHABLE...
+[20200602-19:03:47-251] INFO    main                 o.o.util.Environment.logSystemInfo()                   : openTCS baseline version: 4.17.0-SNAPSHOT (build date: 2020-05-28 09:18:34), customization '-' version - (build date: -), Java: 1.8.0_231, Oracle Corporation; JVM: 25.231-b11, Oracle Corporation; OS: Linux, amd64
+[20200602-19:03:47-421] INFO    main                 o.o.c.cfg4j.Cfg4jConfigurationBindingProvider.buildSource(): Using default configuration file /home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-Kernel/build/install/openTCS-Kernel/./config/opentcs-kernel-defaults-baseline.properties...
+[20200602-19:03:47-438] WARNING main                 o.o.c.cfg4j.Cfg4jConfigurationBindingProvider.buildSource(): Supplementary configuration file /home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-Kernel/build/install/openTCS-Kernel/./config/opentcs-kernel-defaults-custom.properties not found, skipped.
+[20200602-19:03:47-440] INFO    main                 o.o.c.cfg4j.Cfg4jConfigurationBindingProvider.buildSource(): Using overrides from supplementary configuration file /home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-Kernel/build/install/openTCS-Kernel/./config/opentcs-kernel.properties...
+[20200602-19:03:47-448] INFO    main                 o.c.provider.ConfigurationProviderBuilder.build()      : Initializing ConfigurationProvider with org.opentcs.configuration.cfg4j.CachedConfigurationSource source, org.opentcs.configuration.cfg4j.PeriodicalReloadStrategy reload strategy and org.cfg4j.source.context.environment.DefaultEnvironment environment
+[20200602-19:03:47-470] INFO    main                 o.o.kernel.RunKernel.findRegisteredModules()           : Integrating injection module org.opentcs.virtualvehicle.LoopbackCommAdapterModule
+[20200602-19:03:47-473] INFO    main                 o.o.kernel.RunKernel.findRegisteredModules()           : Integrating injection module org.opentcs.kernel.extensions.adminwebapi.AdminWebApiModule
+[20200602-19:03:47-475] INFO    main                 o.o.kernel.RunKernel.findRegisteredModules()           : Integrating injection module org.opentcs.kernel.extensions.servicewebapi.ServiceWebApiModule
+[20200602-19:03:47-479] INFO    main                 o.o.kernel.RunKernel.findRegisteredModules()           : Integrating injection module org.opentcs.kernel.extensions.rmi.RmiServicesModule
+[20200602-19:03:47-482] INFO    main                 o.o.kernel.RunKernel.findRegisteredModules()           : Integrating injection module org.opentcs.kernel.extensions.statistics.StatisticsModule
+[20200602-19:03:47-485] INFO    main                 o.o.kernel.RunKernel.findRegisteredModules()           : Integrating injection module org.opentcs.kernel.extensions.xmlhost.TcpHostInterfaceModule
+[20200602-19:03:47-489] INFO    main                 o.o.kernel.RunKernel.findRegisteredModules()           : Integrating injection module org.opentcs.kernel.extensions.controlcenter.ControlCenterModule
+[20200602-19:03:48-227] WARNING main                 o.o.k.e.rmi.RmiServicesModule.configure()              : SSL encryption disabled, connections will not be secured!
+[20200602-19:03:48-254] INFO    main                 o.o.k.e.controlcenter.ControlCenterModule.configure()  : Control center disabled by configuration.
+[20200602-19:03:49-660] INFO    main                 o.o.k.vehicles.VehicleCommAdapterRegistry.<init>()     : Setting up communication adapter factory: org.opentcs.skyvehicle.MqttCommunicationAdapterFactory
+[20200602-19:03:49-662] INFO    main                 o.o.k.vehicles.VehicleCommAdapterRegistry.<init>()     : Setting up communication adapter factory: org.opentcs.virtualvehicle.LoopbackCommunicationAdapterFactory
+[20200602-19:03:49-703] INFO    main                 o.o.k.e.rmi.XMLFileUserAccountPersister.loadUserAccounts(): Account data file does not exist, no user accounts available.
+[20200602-19:03:49-849] INFO    main                 o.o.kernel.StandardKernel.setState()                   : Switching kernel to state 'MODELLING'
+[20200602-19:03:49-946] INFO    Thread-1             o.e.j.u.log.Log.initialized()                          : Logging initialized @2884ms to org.eclipse.jetty.util.log.Slf4jLog
+[20200602-19:03:50-064] INFO    Thread-1             s.e.jetty.EmbeddedJettyServer.ignite()                 : == Spark has ignited ...
+[20200602-19:03:50-065] INFO    Thread-1             s.e.jetty.EmbeddedJettyServer.ignite()                 : >> Listening on 127.0.0.1:55100
+[20200602-19:03:50-075] INFO    Thread-1             o.e.j.server.Server.doStart()                          : jetty-9.4.6.v20170531
+[20200602-19:03:50-128] INFO    Thread-1             o.e.j.s.session.DefaultSessionIdManager.doStart()      : DefaultSessionIdManager workerName=node0
+[20200602-19:03:50-129] INFO    Thread-1             o.e.j.s.session.DefaultSessionIdManager.doStart()      : No SessionScavenger set, using defaults
+[20200602-19:03:50-133] INFO    Thread-1             o.e.j.s.session.HouseKeeper.startScavenging()          : Scavenging every 600000ms
+[20200602-19:03:50-156] INFO    Thread-1             o.e.j.server.AbstractConnector.doStart()               : Started ServerConnector@3739dd6d{HTTP/1.1,[http/1.1]}{127.0.0.1:55100}
+[20200602-19:03:50-158] INFO    Thread-1             o.e.j.server.Server.doStart()                          : Started @3096ms
+[20200602-19:03:50-225] INFO    main                 o.o.kernel.KernelStarter.startKernel()                 : Loaded model named 'unnamed'.
+[20200602-19:03:50-226] INFO    main                 o.o.kernel.StandardKernel.setState()                   : Switching kernel to state 'OPERATING'
+[20200602-19:03:50-233] WARNING main                 o.o.k.e.servicewebapi.ServiceWebApi.initialize()       : Encryption disabled, connections will not be secured!
+[20200602-19:03:50-237] INFO    Thread-10            s.e.jetty.EmbeddedJettyServer.ignite()                 : == Spark has ignited ...
+[20200602-19:03:50-238] INFO    Thread-10            s.e.jetty.EmbeddedJettyServer.ignite()                 : >> Listening on 0.0.0.0:55200
+[20200602-19:03:50-238] INFO    Thread-10            o.e.j.server.Server.doStart()                          : jetty-9.4.6.v20170531
+[20200602-19:03:50-244] INFO    Thread-10            o.e.j.s.session.DefaultSessionIdManager.doStart()      : DefaultSessionIdManager workerName=node0
+[20200602-19:03:50-245] INFO    Thread-10            o.e.j.s.session.DefaultSessionIdManager.doStart()      : No SessionScavenger set, using defaults
+[20200602-19:03:50-246] INFO    Thread-10            o.e.j.s.session.HouseKeeper.startScavenging()          : Scavenging every 660000ms
+[20200602-19:03:50-248] INFO    main                 o.o.k.e.statistics.StatisticsCollector.initialize()    : Logging events to /home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-Kernel/build/install/openTCS-Kernel/./log/statistics/opentcs-statistics-20200602-190350.txt...
+[20200602-19:03:50-249] INFO    Thread-10            o.e.j.server.AbstractConnector.doStart()               : Started ServerConnector@a92b0db{HTTP/1.1,[http/1.1]}{0.0.0.0:55200}
+[20200602-19:03:50-250] INFO    Thread-10            o.e.j.server.Server.doStart()                          : Started @3188ms
+[20200602-19:04:32-649] INFO    Thread-19            s.e.jetty.EmbeddedJettyServer.extinguish()             : >>> Spark shutting down ...
+[20200602-19:04:32-649] INFO    kernelExecutor       o.o.k.e.x.orders.XMLTelegramOrderReceiver.terminate()  : Terminating connection listener...
+[20200602-19:04:32-650] INFO    xmlOrderConnListener o.o.k.e.x.orders.XMLTelegramOrderReceiver$ConnectionListener.run(): Received termination signal.
+[20200602-19:04:32-651] INFO    xmlOrderConnListener o.o.k.e.x.orders.XMLTelegramOrderReceiver$ConnectionListener.run(): Terminated connection listener.
+[20200602-19:04:32-651] INFO    kernelExecutor       o.o.k.e.x.orders.XMLTelegramOrderReceiver.terminate()  : Connection listener thread has terminated.
+[20200602-19:04:32-657] INFO    Thread-19            o.e.j.server.AbstractConnector.doStop()                : Stopped ServerConnector@a92b0db{HTTP/1.1,[http/1.1]}{0.0.0.0:55200}
+[20200602-19:04:32-657] INFO    Thread-19            o.e.j.s.session.HouseKeeper.stopScavenging()           : Stopped scavenging
+[20200602-19:04:32-659] INFO    Thread-19            s.e.jetty.EmbeddedJettyServer.extinguish()             : done
+[20200602-19:04:33-153] INFO    kernelExecutor       o.o.kernel.StandardKernel.setState()                   : Switching kernel to state 'MODELLING'
+[20200602-19:04:33-382] INFO    kernelExecutor       o.o.kernel.StandardKernel.setState()                   : Switching kernel to state 'OPERATING'
+[20200602-19:04:33-628] WARNING kernelExecutor       o.o.k.e.c.vehicles.AttachmentManager.autoAttachAdapterToVehicle(): Couldn't attach preferred adapter org.opentcs.testvehicle.TestCommAdapterFactory to Vehicle-02.  Attaching first available adapter.
+[20200602-19:04:33-673] WARNING kernelExecutor       o.o.k.e.c.vehicles.AttachmentManager.autoAttachAdapterToVehicle(): Couldn't attach preferred adapter org.opentcs.testvehicle.TestCommAdapterFactory to Vehicle-03.  Attaching first available adapter.
+[20200602-19:04:33-701] WARNING kernelExecutor       o.o.k.e.c.vehicles.AttachmentManager.autoAttachAdapterToVehicle(): Couldn't attach preferred adapter org.opentcs.testvehicle.TestCommAdapterFactory to Vehicle-04.  Attaching first available adapter.
+[20200602-19:04:33-731] WARNING kernelExecutor       o.o.k.e.servicewebapi.ServiceWebApi.initialize()       : Encryption disabled, connections will not be secured!
+[20200602-19:04:33-733] INFO    kernelExecutor       o.o.k.e.statistics.StatisticsCollector.initialize()    : Logging events to /home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-Kernel/build/install/openTCS-Kernel/./log/statistics/opentcs-statistics-20200602-190433.txt...
+[20200602-19:04:33-735] INFO    Thread-20            s.e.jetty.EmbeddedJettyServer.ignite()                 : == Spark has ignited ...
+[20200602-19:04:33-736] INFO    Thread-20            s.e.jetty.EmbeddedJettyServer.ignite()                 : >> Listening on 0.0.0.0:55200
+[20200602-19:04:33-737] INFO    Thread-20            o.e.j.server.Server.doStart()                          : jetty-9.4.6.v20170531
+[20200602-19:04:33-779] INFO    Thread-20            o.e.j.s.session.DefaultSessionIdManager.doStart()      : DefaultSessionIdManager workerName=node0
+[20200602-19:04:33-779] INFO    Thread-20            o.e.j.s.session.DefaultSessionIdManager.doStart()      : No SessionScavenger set, using defaults
+[20200602-19:04:33-781] INFO    Thread-20            o.e.j.s.session.HouseKeeper.startScavenging()          : Scavenging every 660000ms
+[20200602-19:04:33-787] INFO    Thread-20            o.e.j.server.AbstractConnector.doStart()               : Started ServerConnector@4be6a80a{HTTP/1.1,[http/1.1]}{0.0.0.0:55200}
+[20200602-19:04:33-789] INFO    Thread-20            o.e.j.server.Server.doStart()                          : Started @46727ms
