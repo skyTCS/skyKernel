@@ -23,27 +23,28 @@ public class LoopbackVehicleModel
 
   /**
    * Indicates whether this communication adapter is in single step mode or not (i.e. in automatic
-   * mode).
+   * mode).指示此通信适配器是否处于单步模式（即处于自动模式）。
    */
   private boolean singleStepModeEnabled;
   /**
-   * Indicates which operation is a loading operation.
+   * Indicates which operation is a loading operation.指示哪个操作是加载操作。
    */
   private final String loadOperation;
   /**
-   * Indicates which operation is an unloading operation.
+   * Indicates which operation is an unloading operation.指示哪个操作是卸载操作。
    */
   private final String unloadOperation;
   /**
-   * The time needed for executing operations.
+   * The time needed for executing operations.执行操作所需的时间。
    */
   private int operatingTime;
   /**
    * The velocity controller for calculating the simulated vehicle's velocity and current position.
+   * 速度控制器，用于计算模拟车辆的速度和当前位置。
    */
   private final VelocityController velocityController;
   /**
-   * Keeps a log of recent velocity values.
+   * Keeps a log of recent velocity values.记录最近的速度值。
    */
   private final VelocityHistory velocityHistory = new VelocityHistory(100, 10);
 
@@ -251,9 +252,9 @@ public class LoopbackVehicleModel
 
   @Override
   public void addVelocityValue(int velocityValue) {
-    // Store the new value in the history...
+    // Store the new value in the history...将新值存储在历史记录中...
     velocityHistory.addVelocityValue(velocityValue);
-    // ...and let all observers know about it.
+    // ...and let all observers know about it....并让所有观察者知道这一点。
     getPropertyChangeSupport().firePropertyChange(Attribute.VELOCITY_HISTORY.name(),
                                                   null,
                                                   velocityHistory);
@@ -306,39 +307,46 @@ public class LoopbackVehicleModel
   }
 
   /**
-   * Notification arguments to indicate some change.
+   * Notification arguments to indicate some change.通知参数指示一些更改。
    */
   public static enum Attribute {
     /**
      * Indicates a change of the virtual vehicle's single step mode setting.
+     * 指示虚拟车辆单步模式设置的更改。
      */
     SINGLE_STEP_MODE,
     /**
      * Indicates a change of the virtual vehicle's default operating time.
+     * 指示虚拟车辆的默认运行时间的更改。
      */
     OPERATING_TIME,
     /**
      * Indicates a change of the virtual vehicle's maximum acceleration.
+     * 指示虚拟车辆的最大加速度的变化。
      */
     ACCELERATION,
     /**
      * Indicates a change of the virtual vehicle's maximum deceleration.
+     * 指示虚拟车辆的最大减速度的变化。
      */
     DECELERATION,
     /**
      * Indicates a change of the virtual vehicle's maximum forward velocity.
+     * 指示虚拟车辆的最大前进速度的变化。
      */
     MAX_FORWARD_VELOCITY,
     /**
      * Indicates a change of the virtual vehicle's maximum reverse velocity.
+     * 指示虚拟车辆的最大后退速度的变化。
      */
     MAX_REVERSE_VELOCITY,
     /**
-     * Indicates a change of the virtual vehicle's paused setting.
+     * Indicates a change of the virtual vehicle's paused setting.指示虚拟车辆的暂停设置的更改。
      */
     VEHICLE_PAUSED,
     /**
      * Indicates a change of the virtual vehicle's velocity history.
+     * 指示虚拟车辆的速度历史记录的更改。
      */
     VELOCITY_HISTORY,
   }

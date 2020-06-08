@@ -123,6 +123,7 @@ public class LoopbackCommunicationAdapter
           configuration.commandQueueCapacity(),
           1,
           configuration.rechargeOperation());
+    
     this.vehicle = requireNonNull(vehicle, "vehicle");
     this.configuration = requireNonNull(configuration, "configuration");
     this.componentsFactory = requireNonNull(componentsFactory, "componentsFactory");
@@ -224,10 +225,10 @@ public class LoopbackCommunicationAdapter
   public synchronized void sendCommand(MovementCommand cmd) {
     requireNonNull(cmd, "cmd");
 
-    // Reset the execution flag for single-step mode.
+    // Reset the execution flag for single-step mode.重置单步模式的执行标志。
     singleStepExecutionAllowed = false;
-    // Don't do anything else - the command will be put into the sentQueue
-    // automatically, where it will be picked up by the simulation task.
+    // Don't do anything else - the command will be put into the sentQueue什么都不做-该命令将被放入sendQueue
+    // automatically, where it will be picked up by the simulation task.自动，模拟任务将在哪里拾取它。
   }
 
   @Override
@@ -295,6 +296,7 @@ public class LoopbackCommunicationAdapter
 
   @Override
   protected synchronized void connectVehicle() {
+    
   }
 
   @Override
@@ -334,8 +336,8 @@ public class LoopbackCommunicationAdapter
       extends CyclicTask {
 
     /**
-     * The time that has passed for the velocity controller whenever
-     * <em>advanceTime</em> has passed for real.
+     * The time that has passed for the velocity controller whenever   每当速度控制器经过的时间
+     * <em>advanceTime</em> has passed for real.    <em> advanceTime </ em>已经过去了。
      */
     private int simAdvanceTime;
 
@@ -359,11 +361,12 @@ public class LoopbackCommunicationAdapter
       }
       else {
         // If we were told to move somewhere, simulate the journey.
+        //如果被告知要搬到某个地方，请模拟旅程。
         LOG.debug("Processing MovementCommand...");
         final Step curStep = curCommand.getStep();
-        // Simulate the movement.
+        // Simulate the movement.模拟运动。
         simulateMovement(curStep);
-        // Simulate processing of an operation.
+        // Simulate processing of an operation.模拟操作的处理。
         if (!curCommand.isWithoutOperation()) {
           simulateOperation(curCommand.getOperation());
         }
@@ -371,10 +374,11 @@ public class LoopbackCommunicationAdapter
         if (!isTerminated()) {
           // Set the vehicle's state back to IDLE, but only if there aren't 
           // any more movements to be processed.
+          //将车辆的状态重新设置为“ IDLE”，但前提是没有更多要处理的动作。
           if (getSentQueue().size() <= 1 && getCommandQueue().isEmpty()) {
             getProcessModel().setVehicleState(Vehicle.State.IDLE);
           }
-          // Update GUI.
+          // Update GUI.更新GUI。
           synchronized (LoopbackCommunicationAdapter.this) {
             MovementCommand sentCmd = getSentQueue().poll();
             // If the command queue was cleared in the meantime, the kernel
@@ -382,8 +386,12 @@ public class LoopbackCommunicationAdapter
             // have, so we only peek() at the beginning of this method and
             // poll() here. If sentCmd is null, the queue was probably cleared
             // and we shouldn't report anything back.
+            //如果在此期间清除了命令队列，则内核可能会惊讶地听到我们执行了本不应该执行的命令，
+            //因此我们仅在此方法的开头偷看（），然后在此处轮询（）。 如果sendCmd为null，
+            //则队列可能已清除，我们不应该向后报告任何内容。
             if (sentCmd != null && sentCmd.equals(curCommand)) {
               // Let the vehicle manager know we've finished this command.
+              //让车辆管理员知道我们已经完成了此命令。
               getProcessModel().commandExecuted(curCommand);
               LoopbackCommunicationAdapter.this.notify();
             }
@@ -397,8 +405,10 @@ public class LoopbackCommunicationAdapter
      * then the vehicle's state is failure and some false movement
      * must be simulated. In the other case normal step
      * movement will be simulated.
+     * 模拟车辆的运动。 如果方法参数为空，则车辆的状态为故障，必须模拟一些错误的运动。 
+     * 在其他情况下，将模拟正常的脚步运动。
      *
-     * @param step A step
+     * @param step A step   一步
      * @throws InterruptedException If an exception occured while sumulating
      */
     private void simulateMovement(Step step) {
@@ -426,6 +436,7 @@ public class LoopbackCommunicationAdapter
                                                                          orientation));
       // Advance the velocity controller by small steps until the
       // controller has processed all way entries.
+      //逐步推进速度控制器，直到控制器处理完所有通道条目。
       while (getProcessModel().getVelocityController().hasWayEntries() && !isTerminated()) {
         WayEntry wayEntry = getProcessModel().getVelocityController().getCurrentWayEntry();
         Uninterruptibles.sleepUninterruptibly(ADVANCE_TIME, TimeUnit.MILLISECONDS);
@@ -433,16 +444,16 @@ public class LoopbackCommunicationAdapter
         WayEntry nextWayEntry = getProcessModel().getVelocityController().getCurrentWayEntry();
         if (wayEntry != nextWayEntry) {
           // Let the vehicle manager know that the vehicle has reached
-          // the way entry's destination point.
+          // the way entry's destination point.让车辆管理员知道车辆已到达路口的目的地。
           getProcessModel().setVehiclePosition(wayEntry.getDestPointName());
         }
       }
     }
 
     /**
-     * Simulates an operation.
+     * Simulates an operation.模拟操作。
      *
-     * @param operation A operation
+     * @param operation A operation  一项操作。
      * @throws InterruptedException If an exception occured while simulating
      */
     private void simulateOperation(String operation) {
@@ -462,6 +473,7 @@ public class LoopbackCommunicationAdapter
       }
       if (operation.equals(getProcessModel().getLoadOperation())) {
         // Update load handling devices as defined by this operation
+        //更新此操作定义的负载处理设备
         getProcessModel().setVehicleLoadHandlingDevices(
             Arrays.asList(new LoadHandlingDevice(LHD_NAME, true)));
       }

@@ -26,9 +26,9 @@ public interface LoopbackAdapterComponentsFactory {
 
   /**
    * Creates a new panel for the given comm adapter.
-   *
-   * @param commAdapter The comm adapter to create a panel for.
-   * @return A new panel for the given comm adapter.
+   *为给定的通讯适配器创建一个新面板。
+   * @param commAdapter The comm adapter to create a panel for.用于为其创建面板的通讯适配器。
+   * @return A new panel for the given comm adapter.给定通讯适配器的新面板。
    */
   @Deprecated
   LoopbackCommunicationAdapterPanel createPanel(LoopbackCommunicationAdapter commAdapter);

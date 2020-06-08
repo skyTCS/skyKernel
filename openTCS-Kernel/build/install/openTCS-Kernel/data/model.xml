@@ -253,16 +253,19 @@
         <property name="username" value="xiao1"/>
     </vehicle>
     <vehicle name="Vehicle-02" length="1000" energyLevelCritical="30" energyLevelGood="90" energyLevelFullyRecharged="95" energyLevelSufficientlyRecharged="45" maxVelocity="1000" maxReverseVelocity="1000" type="">
+        <property name="key" value="vehicle02"/>
         <property name="loopback:loadOperation" value="Load cargo"/>
         <property name="loopback:unloadOperation" value="Unload cargo"/>
         <property name="tcs:preferredAdapterClass" value="org.opentcs.testvehicle.TestCommAdapterFactory"/>
     </vehicle>
     <vehicle name="Vehicle-03" length="1000" energyLevelCritical="30" energyLevelGood="90" energyLevelFullyRecharged="95" energyLevelSufficientlyRecharged="45" maxVelocity="1000" maxReverseVelocity="1000" type="">
+        <property name="key" value="vehicle03"/>
         <property name="loopback:loadOperation" value="Load cargo"/>
         <property name="loopback:unloadOperation" value="Unload cargo"/>
         <property name="tcs:preferredAdapterClass" value="org.opentcs.testvehicle.TestCommAdapterFactory"/>
     </vehicle>
     <vehicle name="Vehicle-04" length="1000" energyLevelCritical="30" energyLevelGood="90" energyLevelFullyRecharged="95" energyLevelSufficientlyRecharged="45" maxVelocity="1000" maxReverseVelocity="1000" type="">
+        <property name="key" value="vehicle04"/>
         <property name="loopback:loadOperation" value="Load cargo"/>
         <property name="loopback:unloadOperation" value="Unload cargo"/>
         <property name="tcs:preferredAdapterClass" value="org.opentcs.testvehicle.TestCommAdapterFactory"/>
@@ -1024,5 +1027,5 @@
             <property name="POSITION_Y" value="-3000"/>
         </modelLayoutElement>
     </visualLayout>
-    <property name="tcs:modelFileLastModified" value="2020-05-26T13:04:27.091Z"/>
+    <property name="tcs:modelFileLastModified" value="2020-06-05T09:34:43.469Z"/>
 </model>

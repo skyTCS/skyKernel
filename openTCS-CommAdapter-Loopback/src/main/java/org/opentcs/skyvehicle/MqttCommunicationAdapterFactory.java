@@ -1,11 +1,14 @@
 package org.opentcs.skyvehicle;
 
+import com.zjw.vehicle.ExampleCommAdapterDescription;
 import static java.util.Objects.requireNonNull;
 import javax.inject.Inject;
 import org.opentcs.data.model.Vehicle;
-import org.opentcs.drivers.vehicle.VehicleCommAdapter;
 import org.opentcs.drivers.vehicle.VehicleCommAdapterDescription;
 import org.opentcs.drivers.vehicle.VehicleCommAdapterFactory;
+import org.opentcs.util.Assertions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 环回通信适配器（虚拟车辆）的工厂。
@@ -14,8 +17,9 @@ import org.opentcs.drivers.vehicle.VehicleCommAdapterFactory;
 public class MqttCommunicationAdapterFactory 
     implements VehicleCommAdapterFactory{
 
+  private static final Logger LOG = LoggerFactory.getLogger(MqttCommunicationAdapterFactory.class);
   //适配器组件工厂
-  private final MqttAdapterComponentsFactory adapterFactory;
+  private final MqttAdapterComponentsFactory componentsFactory;
   //指示此组件是否已初始化。
   private boolean initialized;
 
@@ -25,7 +29,7 @@ public class MqttCommunicationAdapterFactory
    */
   @Inject
   public MqttCommunicationAdapterFactory(MqttAdapterComponentsFactory componentsFactory) {
-    this.adapterFactory = requireNonNull(componentsFactory, "componentsFactory");
+    this.componentsFactory = requireNonNull(componentsFactory, "componentsFactory");
   }
 
   /**
@@ -35,7 +39,8 @@ public class MqttCommunicationAdapterFactory
   @Override
   public String getAdapterDescription() {
     //这是Kernel中显示的驱动名称,中文会乱码，如果要使用中文，请使用配置文件
-    return "MyTestAdapter";
+    //return "MqttAdapter";
+    return getDescription().getDescription();
   }
 
   /**
@@ -44,7 +49,7 @@ public class MqttCommunicationAdapterFactory
    */
   @Override
   public VehicleCommAdapterDescription getDescription() {
-    return VehicleCommAdapterFactory.super.getDescription(); //To change body of generated methods, choose Tools | Templates.
+    return new ExampleCommAdapterDescription();
   }
 
   /**
@@ -55,6 +60,11 @@ public class MqttCommunicationAdapterFactory
   @Override
   public boolean providesAdapterFor(Vehicle vehicle) {
     requireNonNull(vehicle, "vehicle");
+    
+    if (vehicle.getProperty("key") == null) {
+      return false;
+    }
+    
     return true;
   }
 
@@ -64,10 +74,17 @@ public class MqttCommunicationAdapterFactory
    * @return 
    */
   @Override
-  public VehicleCommAdapter getAdapterFor(Vehicle vehicle) {
+  public MqttCommunicationAdapter getAdapterFor(Vehicle vehicle) {
     requireNonNull(vehicle, "vehicle");
-    return adapterFactory.createMqttCommAdapter(vehicle);
+    if (!providesAdapterFor(vehicle)) {
+      return null;
+    }
+    MqttCommunicationAdapter adapter = componentsFactory.createMqttCommAdapter(vehicle);
+    adapter.getProcessModel().setTopic(vehicle.getProperty("key"));
+    return adapter;
   }
+  
+  
 
   /**
    * （重新）在使用该组件之前将其初始化。
@@ -75,8 +92,8 @@ public class MqttCommunicationAdapterFactory
   @Override
   public void initialize() {
     if (initialized) {
-       //System.out.println("org.opentcs.skyvehicle.MqttCommunicationAdapterFactory.initialize()");
-       System.out.println("----chu shi hua + Already initialized.");
+       //System.out.println("----chu shi hua + Already initialized.");
+      LOG.debug("------Already initialized.");
       return;
     }
     initialized = true;
@@ -97,7 +114,8 @@ public class MqttCommunicationAdapterFactory
   @Override
   public void terminate() {
     if (!initialized) {
-      System.out.println("----wei chu shi hua + Not initialized.");
+      LOG.debug("-----Not initialized.");
+      //System.out.println("----wei chu shi hua + Not initialized.");
       return;
     }
     initialized = false;

@@ -5,6 +5,7 @@
  */
 package org.opentcs.testvehicle;
 
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.*;
@@ -20,7 +21,7 @@ public class MqttTest {
    */
   @Test
   public void test () {
-    MqttMessageUtil messageUtil = new MqttMessageUtil();
+    /*MqttMessageUtil messageUtil = new MqttMessageUtil();
     
     
     messageUtil.connect("admin","public");
@@ -36,7 +37,11 @@ public class MqttTest {
       }
       
     }
-    System.out.println("-------------------------org.opentcs.testvehicle.MqttTest.test()");
+    System.out.println("-------------------------org.opentcs.testvehicle.MqttTest.test()");*/
+    
+    String s = null;
+    Objects.requireNonNull(s,"hahahaha liang le ");
+    
   }
   
   
