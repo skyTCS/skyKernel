@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.opentcs.skyvehicle;
 
 import com.google.common.util.concurrent.Uninterruptibles;
@@ -142,7 +137,10 @@ public class MqttCommunicationAdapter
   @Override
   public void sendCommand(MovementCommand mc){
     requireNonNull(mc, "mc");
-
+    System.out.println("***mc***final point::" + mc.getFinalDestination().getName());
+    System.out.println("***mc***final location::" + mc.getFinalDestinationLocation().getName());
+    System.out.println("***mc***operation::" + mc.getFinalOperation());
+    //System.out.println("***mc***operation location::" + mc.getOpLocation().getName());
     // 重置单步模式的执行标志。
     singleStepExecutionAllowed = false;
     // 什么都不做-该命令将被放入sendQueue
@@ -407,6 +405,7 @@ public class MqttCommunicationAdapter
         try {
           //获取状态  位置  速度  方向等
           Car carInfo = vs.getCar(topic);
+          System.out.println("-----car String = " + carInfo.toString());
           if (carInfo == null) {
           Thread.sleep(200);
           return;
@@ -428,6 +427,7 @@ public class MqttCommunicationAdapter
           //simAdvanceTime = (int) (ADVANCE_TIME * configuration.simulationTimeFactor());
           simAdvanceTime = (int) (ADVANCE_TIME * 1.0);
           if (curCommand == null) {
+            //System.out.println("++++curCommand == null le ");
             Uninterruptibles.sleepUninterruptibly(ADVANCE_TIME, TimeUnit.MILLISECONDS);
             getProcessModel().getVelocityController().advanceTime(simAdvanceTime);
           }
@@ -435,11 +435,14 @@ public class MqttCommunicationAdapter
             // If we were told to move somewhere, simulate the journey.
             //如果被告知要搬到某个地方，请模拟旅程。
             LOG.debug("Processing MovementCommand...");
+            //System.out.println("++++kai shi mo ni ma");
             final Route.Step curStep = curCommand.getStep();
             // Simulate the movement.模拟运动。
+            //System.out.println("++++da yin yi xia lu jing ::" + curStep);
             simulateMovement(curStep);
             // Simulate processing of an operation.模拟操作的处理。
             if (!curCommand.isWithoutOperation()) {
+              System.out.println("gan le gan le ----");
               simulateOperation(curCommand.getOperation());
             }
             LOG.debug("Processed MovementCommand.");
@@ -506,7 +509,7 @@ public class MqttCommunicationAdapter
           break;
       }
       String pointName = step.getDestinationPoint().getName();
-      System.out.println("-------point" + pointName);
+      //System.out.println("-------point" + pointName);
       getProcessModel().setVehicleState(Vehicle.State.EXECUTING);
       String currentPoint = "";
       String currentStatus = "";
@@ -516,6 +519,7 @@ public class MqttCommunicationAdapter
       //
       while (!currentPoint.equals(pointName) && !isTerminated()) {   
         Car carInfo = vs.getCar(topic);
+        //System.out.println("222-----car String = " + carInfo.toString());
         if (carInfo == null) {
           Thread.sleep(200);
           continue;
@@ -543,7 +547,7 @@ public class MqttCommunicationAdapter
      */
     private void simulateOperation(String operation) {
       requireNonNull(operation, "operation");
-
+      System.out.println("---zai zhe li ting le:::" + operation);
       if (isTerminated()) {
         return;
       }

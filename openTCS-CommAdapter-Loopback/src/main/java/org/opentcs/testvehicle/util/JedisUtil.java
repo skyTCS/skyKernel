@@ -29,6 +29,7 @@ public class JedisUtil {
 
  
         // 创建连接池
+        //jedisPool = new JedisPool(config, "localhost");
         jedisPool = new JedisPool(config, "localhost");
     }
  

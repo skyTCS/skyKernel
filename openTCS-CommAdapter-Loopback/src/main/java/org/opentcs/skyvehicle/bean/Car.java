@@ -6,10 +6,10 @@ package org.opentcs.skyvehicle.bean;
  */
 public class Car {
   
-    private String name;
-    private String energy;
-    private String state;
-    private String point;
+    private String name;    //名称
+    private String energy;  //电量
+    private String state;   //状态
+    private String point;   //位置
 
   
     public Car() {

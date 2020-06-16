@@ -10,7 +10,7 @@ import org.opentcs.skyvehicle.bean.Car;
 import org.opentcs.skyvehicle.dao.VehicleDao;
 
 /**
- *
+ * 车辆服务
  * @author eternal
  */
 public class VehicleService {
@@ -43,7 +43,7 @@ public class VehicleService {
   
   public boolean sendPath(String path) {
     
-    
+    System.out.println("+++++++send da yin lu jing la la *：："+path);
     
     return true;
   }

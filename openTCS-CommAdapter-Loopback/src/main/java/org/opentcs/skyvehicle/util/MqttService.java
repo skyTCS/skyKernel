@@ -15,7 +15,9 @@ public class MqttService {
   
   private MqttUtil mqttUtil;
   
-
+  /**
+   * 初始化，创建一个mqtt操作
+   */
   public MqttService() {
     mqttUtil = new MqttUtil();
     mqttUtil.init("emqx.properties");
