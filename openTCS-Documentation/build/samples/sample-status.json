@@ -1,0 +1,40 @@
+{
+  "timeStamp" : "2020-06-22T05:27:36.712Z",
+  "statusMessages" : [ {
+    "type" : "TransportOrder",
+    "sequenceNumber" : 0,
+    "creationTimeStamp" : "2020-06-22T05:27:16.737Z",
+    "orderName" : "TOrder-XYZ",
+    "processingVehicleName" : "Vehicle-0001",
+    "orderState" : "ACTIVE",
+    "destinations" : [ {
+      "locationName" : "Storage 01",
+      "operation" : "Load cargo",
+      "state" : "PRISTINE",
+      "properties" : [ ]
+    }, {
+      "locationName" : "Storage 02",
+      "operation" : "Unload cargo",
+      "state" : "PRISTINE",
+      "properties" : [ ]
+    } ],
+    "properties" : [ {
+      "key" : "transport order-specific key",
+      "value" : "some value"
+    } ]
+  }, {
+    "type" : "Vehicle",
+    "sequenceNumber" : 1,
+    "creationTimeStamp" : "2020-06-22T05:27:21.782Z",
+    "vehicleName" : "Vehicle-0001",
+    "transportOrderName" : "TOrder-XYZ",
+    "position" : "Point-0001",
+    "precisePosition" : {
+      "x" : 20560,
+      "y" : 17830,
+      "z" : 0
+    },
+    "state" : "EXECUTING",
+    "procState" : "PROCESSING_ORDER"
+  } ]
+}

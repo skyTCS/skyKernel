@@ -1,0 +1,13 @@
+{
+  "name" : "TransportOrder-0",
+  "category" : "cat1",
+  "state" : "RAW",
+  "intendedVehicle" : "Vehicle-1",
+  "processingVehicle" : null,
+  "destinations" : [ {
+    "locationName" : "Location-01",
+    "operation" : "NOP",
+    "state" : "PRISTINE",
+    "properties" : [ ]
+  } ]
+}

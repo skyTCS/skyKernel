@@ -1,0 +1,21 @@
+{
+  "deadline" : "2020-06-22T05:27:38.585Z",
+  "intendedVehicle" : "Vehicle-01",
+  "destinations" : [ {
+    "locationName" : "Storage 01",
+    "operation" : "Load cargo",
+    "properties" : [ ]
+  }, {
+    "locationName" : "Storage 02",
+    "operation" : "Unload cargo",
+    "properties" : [ {
+      "key" : "destination-specific key",
+      "value" : "some value"
+    } ]
+  } ],
+  "properties" : [ {
+    "key" : "transport order-specific key",
+    "value" : "some value"
+  } ],
+  "dependencies" : [ ]
+}

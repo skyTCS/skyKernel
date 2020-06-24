@@ -36,14 +36,17 @@ public class VehicleService {
   }
   
   //车辆作业操作
-  public boolean sendWork(String operation) {
+  public boolean sendWork(String operation,String topic) {
     System.out.println("------gong zuo zhong " + operation);
+    mqttUtil.publish("order", operation, 0);
+    String datas = "";
     return true;
   }
   
-  public boolean sendPath(String path) {
+  public boolean sendPath(String path,String topic) {
     
     System.out.println("+++++++send da yin lu jing la la *：："+path);
+    mqttUtil.publish("order", path, 0);
     
     return true;
   }

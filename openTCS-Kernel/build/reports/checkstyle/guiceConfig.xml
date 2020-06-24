@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.16">
+<file name="/home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-Kernel/src/guiceConfig/java/org/opentcs/kernel/DefaultKernelInjectionModule.java">
+<error line="1" severity="info" message="缺少 package-info.java 文件。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+<error line="196" severity="warning" message="本行字符数 111个，最多：100个。" source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="200" severity="warning" message="本行字符数 109个，最多：100个。" source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="204" severity="warning" message="本行字符数 106个，最多：100个。" source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="248" column="24" severity="info" message="lambda 值周围不必要的小括号。" source="com.puppycrawl.tools.checkstyle.checks.coding.UnnecessaryParenthesesCheck"/>
+</file>
+<file name="/home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-Kernel/src/guiceConfig/java/org/opentcs/kernel/RunKernel.java">
+</file>
+<file name="/home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-Kernel/src/guiceConfig/java/org/opentcs/kernel/ShutdownKernel.java">
+<error line="25" severity="info" message="未注释的Main方法。" source="com.puppycrawl.tools.checkstyle.checks.UncommentedMainCheck"/>
+<error line="31" column="39" severity="info" message="避免三元表达式。" source="com.puppycrawl.tools.checkstyle.checks.coding.AvoidInlineConditionalsCheck"/>
+<error line="32" column="32" severity="info" message="避免三元表达式。" source="com.puppycrawl.tools.checkstyle.checks.coding.AvoidInlineConditionalsCheck"/>
+</file>
+<file name="/home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-Kernel/src/guiceConfig/java/org/opentcs/kernel/extensions/controlcenter/ControlCenterModule.java">
+<error line="1" severity="info" message="缺少 package-info.java 文件。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+</file>
+</checkstyle>

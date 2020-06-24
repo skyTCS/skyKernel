@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.opentcs.kernel.persistence.XMLFileModelPersisterTest" tests="6" skipped="2" failures="0" errors="0" timestamp="2020-06-22T05:25:31" hostname="eternal-HP-Laptop-15q-bu1xx" time="0.032">
+  <properties/>
+  <testcase name="testSaveModelShouldWriteXMLModel" classname="org.opentcs.kernel.persistence.XMLFileModelPersisterTest" time="0.028"/>
+  <testcase name="shouldLoadEmptyModelIfNoModelIsSaved" classname="org.opentcs.kernel.persistence.XMLFileModelPersisterTest" time="0.001"/>
+  <testcase name="testSavedModelNameShouldBeAsSpecified" classname="org.opentcs.kernel.persistence.XMLFileModelPersisterTest" time="0.001">
+    <skipped/>
+  </testcase>
+  <testcase name="testLoadModelShouldReadXMLModel" classname="org.opentcs.kernel.persistence.XMLFileModelPersisterTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="shouldNotHaveModelAfterRemovingModel" classname="org.opentcs.kernel.persistence.XMLFileModelPersisterTest" time="0.001"/>
+  <testcase name="testModelNameShouldNotBePresentAfterRemovingModel" classname="org.opentcs.kernel.persistence.XMLFileModelPersisterTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

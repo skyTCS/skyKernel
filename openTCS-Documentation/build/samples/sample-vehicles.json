@@ -1,0 +1,39 @@
+[ {
+  "name" : "Vehicle-1",
+  "properties" : {
+    "someKey" : "someValue"
+  },
+  "length" : 1000,
+  "energyLevelGood" : 90,
+  "energyLevelCritical" : 30,
+  "energyLevel" : 60,
+  "integrationLevel" : "TO_BE_RESPECTED",
+  "procState" : "AWAITING_ORDER",
+  "transportOrder" : null,
+  "currentPosition" : null,
+  "state" : "UNKNOWN"
+}, {
+  "name" : "Vehicle-2",
+  "properties" : { },
+  "length" : 1000,
+  "energyLevelGood" : 90,
+  "energyLevelCritical" : 30,
+  "energyLevel" : 30,
+  "integrationLevel" : "TO_BE_RESPECTED",
+  "procState" : "AWAITING_ORDER",
+  "transportOrder" : null,
+  "currentPosition" : null,
+  "state" : "UNKNOWN"
+}, {
+  "name" : "Vehicle-3",
+  "properties" : { },
+  "length" : 1000,
+  "energyLevelGood" : 90,
+  "energyLevelCritical" : 30,
+  "energyLevel" : 40,
+  "integrationLevel" : "TO_BE_RESPECTED",
+  "procState" : "PROCESSING_ORDER",
+  "transportOrder" : null,
+  "currentPosition" : null,
+  "state" : "UNKNOWN"
+} ]

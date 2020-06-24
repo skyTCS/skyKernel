@@ -513,7 +513,7 @@ public class MqttCommunicationAdapter
       getProcessModel().setVehicleState(Vehicle.State.EXECUTING);
       String currentPoint = "";
       String currentStatus = "";
-      vs.sendPath(pointName);
+      vs.sendPath(pointName,topic);
       
       
       //
@@ -553,7 +553,7 @@ public class MqttCommunicationAdapter
       }
 
       LOG.debug("Operating...");
-      vs.sendWork(operation);
+      vs.sendWork(operation,topic);
     }
   }
   

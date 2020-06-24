@@ -1,0 +1,37 @@
+[ {
+  "name" : "TransportOrder-0",
+  "category" : "cat1",
+  "state" : "RAW",
+  "intendedVehicle" : "Vehicle-1",
+  "processingVehicle" : null,
+  "destinations" : [ {
+    "locationName" : "Location-01",
+    "operation" : "NOP",
+    "state" : "PRISTINE",
+    "properties" : [ ]
+  } ]
+}, {
+  "name" : "TransportOrder-1",
+  "category" : "cat1",
+  "state" : "RAW",
+  "intendedVehicle" : "Vehicle-2",
+  "processingVehicle" : null,
+  "destinations" : [ {
+    "locationName" : "Location-01",
+    "operation" : "NOP",
+    "state" : "PRISTINE",
+    "properties" : [ ]
+  } ]
+}, {
+  "name" : "TransportOrder-2",
+  "category" : "cat2",
+  "state" : "RAW",
+  "intendedVehicle" : "Vehicle-1",
+  "processingVehicle" : null,
+  "destinations" : [ {
+    "locationName" : "Location-01",
+    "operation" : "NOP",
+    "state" : "PRISTINE",
+    "properties" : [ ]
+  } ]
+} ]

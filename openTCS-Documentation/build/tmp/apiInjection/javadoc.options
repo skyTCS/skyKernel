@@ -1,0 +1,18 @@
+-classpath '/home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-API-Base/build/libs/opentcs-api-base-4.17.0-SNAPSHOT.jar:/home/eternal/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.21/139535a69a4239db087de9bab0bee568bf8e0b70/slf4j-api-1.7.21.jar:/home/eternal/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.21/72e00d8dc052190c5d0aca77f9a9c5124ec3a1c1/slf4j-api-1.7.21-javadoc.jar:/home/eternal/.gradle/caches/modules-2/files-2.1/com.google.inject.extensions/guice-assistedinject/4.2.2/c33fb10080d58446f752b4fcfff8a5fabb80a449/guice-assistedinject-4.2.2.jar:/home/eternal/.gradle/caches/modules-2/files-2.1/com.google.inject/guice/4.2.2/6dacbe18e5eaa7f6c9c36db33b42e7985e94ce77/guice-4.2.2.jar:/home/eternal/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar:/home/eternal/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/25.1-android/bdaab946ca5ad20253502d873ba0c3313d141036/guava-25.1-android.jar:/home/eternal/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.2/25ea2e8b0c338a877313bd4672d3fe056ea78f0d/jsr305-3.0.2.jar:/home/eternal/.gradle/caches/modules-2/files-2.1/aopalliance/aopalliance/1.0/235ba8b489512805ac13a8f9ea77a1ca5ebe3e8/aopalliance-1.0.jar:/home/eternal/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-compat-qual/2.0.0/fc89b03860d11d6213d0154a62bcd1c2f69b9efa/checker-compat-qual-2.0.0.jar:/home/eternal/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.1.3/39b109f2cd352b2d71b52a3b5a1a9850e1dc304b/error_prone_annotations-2.1.3.jar:/home/eternal/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/1.1/ed28ded51a8b1c6b112568def5f4b455e6809019/j2objc-annotations-1.1.jar:/home/eternal/.gradle/caches/modules-2/files-2.1/org.codehaus.mojo/animal-sniffer-annotations/1.14/775b7e22fb10026eed3f86e8dc556dfafe35f2d5/animal-sniffer-annotations-1.14.jar'
+-d '/home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-Documentation/build/api-injection'
+-doctitle 'openTCS 4.17.0-SNAPSHOT Injection API documentation'
+-footer 'openTCS 4.17.0-SNAPSHOT'
+-group "Classes supporting customization of openTCS applications" "org.opentcs.customizations*"
+-header 'openTCS 4.17.0-SNAPSHOT'
+-notimestamp 
+-quiet 
+-overview '/home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-API-Injection/src/main/java/overview.html'
+-windowtitle 'openTCS 4.17.0-SNAPSHOT Injection API documentation'
+'/home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-API-Injection/src/main/java/org/opentcs/customizations/plantoverview/PlantOverviewInjectionModule.java'
+'/home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-API-Injection/src/main/java/org/opentcs/customizations/plantoverview/package-info.java'
+'/home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-API-Injection/src/main/java/org/opentcs/customizations/package-info.java'
+'/home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-API-Injection/src/main/java/org/opentcs/customizations/controlcenter/package-info.java'
+'/home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-API-Injection/src/main/java/org/opentcs/customizations/controlcenter/ControlCenterInjectionModule.java'
+'/home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-API-Injection/src/main/java/org/opentcs/customizations/kernel/package-info.java'
+'/home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-API-Injection/src/main/java/org/opentcs/customizations/kernel/KernelInjectionModule.java'
+'/home/eternal/NetBeansProjects/openTCS-4.17.0-src/openTCS-API-Injection/src/main/java/org/opentcs/customizations/ConfigurableInjectionModule.java'

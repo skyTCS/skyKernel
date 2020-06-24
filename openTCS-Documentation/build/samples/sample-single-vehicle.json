@@ -1,0 +1,15 @@
+{
+  "name" : "Vehicle-1",
+  "properties" : {
+    "someKey" : "someValue"
+  },
+  "length" : 1000,
+  "energyLevelGood" : 90,
+  "energyLevelCritical" : 30,
+  "energyLevel" : 60,
+  "integrationLevel" : "TO_BE_RESPECTED",
+  "procState" : "AWAITING_ORDER",
+  "transportOrder" : null,
+  "currentPosition" : null,
+  "state" : "UNKNOWN"
+}
